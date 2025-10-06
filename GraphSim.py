@@ -4,13 +4,22 @@ import matplotlib.pyplot as plt
 from matplotlib import animation
 from matplotlib import collections as mc
 
-lines = [[(0,1), (1,1)], [(2,3), (3,3)] , [(1,2), (1,3)]]
-c = np.array([(1,0,0,1), (0,1,0,1), (0,0,1,1)])
 
-lc = mc.LineCollection(lines, colors=c, linewidths=2)
-fig, ax = pl.subplots()
-ax.add_collection(lc)
-ax.autoscale()
-ax.margins(0.1)
+plt.style.use('dark_background')
+
+fig, ax = plt.subplots()
+
+pointsNum = 10
+radius = 1
+
+for i in range(pointsNum):
+    x = radius * np.cos(2 * np.pi * i / pointsNum)
+    y = radius * np.sin(2 * np.pi * i / pointsNum)
+    for j in range(pointsNum):
+        x2 = radius * np.cos(2 * np.pi * j / pointsNum)
+        y2 = radius * np.sin(2 * np.pi * j / pointsNum)
+        ax.plot([x2,x],[y2,y])
 
 plt.show()
+
+
